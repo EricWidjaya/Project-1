@@ -8,16 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Eric on 7/21/2016.
  */
-public class CategoryAdapter extends BaseAdapter{
+public class FoodAdapter extends BaseAdapter {
 
-    private ArrayList<Category> foods;
+    private ArrayList<Food2> foods;
     private Context context;
 
-    public CategoryAdapter(ArrayList<Category> foods, Context context)
+    public FoodAdapter(ArrayList<Food2> foods, Context context)
     {
         this.foods=foods;
         this.context=context;
@@ -37,7 +39,12 @@ public class CategoryAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int position) {
-        return foods.get(position).getFoodId();
+        return foods.get(position).getId();
+    }
+
+    public ArrayList<Food2> getFoodArray()
+    {
+        return foods;
     }
 
     @Override
@@ -48,10 +55,11 @@ public class CategoryAdapter extends BaseAdapter{
             view = inflater.inflate(R.layout.row_layout, viewGroup, false);
         }
         TextView name = (TextView) view.findViewById(R.id.foodname);
-        Category foods = (Category) getItem(position);
-        name.setText(foods.getFoodName());
+        Food2 foods = (Food2) getItem(position);
+        name.setText(foods.getName());
 
 
         return view;
     }
 }
+

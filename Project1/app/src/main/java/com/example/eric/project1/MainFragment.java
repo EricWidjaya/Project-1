@@ -4,9 +4,12 @@ package com.example.eric.project1;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -36,12 +39,12 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ArrayList<Food> foods = new ArrayList<>();
-        Food Pasta = new Food(1,"Pasta");
-        Food Chinese = new Food(2,"Chinese");
-        Food Hamburgers = new Food(3,"Hamburgers");
-        Food Seafood = new Food(4,"Seafood");
-        Food Steak = new Food(5,"Steak");
+        ArrayList<Category> foods = new ArrayList<>();
+        Category Pasta = new Category(1,"Pasta");
+        Category Chinese = new Category(2,"Chinese");
+        Category Hamburgers = new Category(3,"Hamburgers");
+        Category Seafood = new Category(4,"Seafood");
+        Category Steak = new Category(5,"Steak");
 
         foods.add(Pasta);
         foods.add(Chinese);
@@ -49,8 +52,48 @@ public class MainFragment extends Fragment {
         foods.add(Seafood);
         foods.add(Steak);
 
+        Food2 Fettucine = new Food2("Fettucine","Fettucine",Pasta);
+        Pasta.getFoodArrayList().add(Fettucine);
+        Food2 Spaghetti = new Food2("Spaghetti","Spaghetti",Pasta);
+        Pasta.getFoodArrayList().add(Spaghetti);
+        Food2 Japjae = new Food2("Japjae","Japjae",Chinese);
+        Chinese.getFoodArrayList().add(Japjae);
+        Food2 Capcay = new Food2("Capcay","Capcay",Chinese);
+        Chinese.getFoodArrayList().add(Capcay);
+        Food2 Cheeseburger = new Food2("Cheeseburger","Cheeseburger",Hamburgers);
+        Hamburgers.getFoodArrayList().add(Cheeseburger);
+        Food2 Beefburger = new Food2("Beefburger","Beefburger",Hamburgers);
+        Hamburgers.getFoodArrayList().add(Beefburger);
+        Food2 Sushi = new Food2("Sushi","Sushi", Seafood);
+        Seafood.getFoodArrayList().add(Sushi);
+        Food2 MarinatedCrab = new Food2("Marinated Crab","Marinated Crab",Seafood);
+        Seafood.getFoodArrayList().add(MarinatedCrab);
+        Food2 Hamburg = new Food2("Hamburg","Hamburg",Steak);
+        Steak.getFoodArrayList().add(Hamburg);
+        Food2 Sirloin = new Food2("Sirloin","Sirloin",Steak);
+        Steak.getFoodArrayList().add(Sirloin);
+
         final CategoryAdapter custom = new CategoryAdapter(foods, getContext());
         listView = (ListView) getActivity().findViewById(R.id.listView);
         listView.setAdapter(custom);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+
+                Category food = (Category) custom.getItem(position);
+                Fragment secondFrag = new SecondFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("Category",food);
+                secondFrag.setArguments(bundle);
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container,secondFrag);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+
+        });
     }
 }
