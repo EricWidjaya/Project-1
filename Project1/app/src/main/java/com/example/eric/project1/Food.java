@@ -21,4 +21,12 @@ public class Food {
     public void setFoodName(String foodName) {
         this.foodName = foodName;
     }
+
+    public int getFoodId() {
+        return foodId;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
 }
