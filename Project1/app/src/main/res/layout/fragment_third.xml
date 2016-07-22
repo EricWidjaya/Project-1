@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.eric.project1.ThirdFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Name"
+        android:layout_gravity="left|top"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView2"
+        android:layout_toStartOf="@+id/name" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Description"
+        android:layout_gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/desc"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignStart="@+id/name" />
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Carbohydrates"
+        android:layout_gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/carbo"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Fat"
+        android:layout_gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/fat"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_below="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/imageView2" />
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Protein:"
+        android:layout_gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/fat"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/protein"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_below="@+id/fat"
+        android:layout_alignEnd="@+id/fat" />
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Images:"
+        android:layout_gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView12"
+        android:layout_below="@+id/protein"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:text="Add IMG"
+        android:id="@+id/button2"
+        android:layout_marginStart="27dp"
+        android:layout_below="@+id/textView12"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textView5"
+        android:layout_toEndOf="@+id/button2"
+        android:layout_marginStart="25dp" />
+
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:text="Images:"
+        android:layout_gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:id="@+id/imagespath"
+        android:layout_alignStart="@+id/button2"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentBottom="true" />
+
+
+
+</RelativeLayout>

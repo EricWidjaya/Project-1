@@ -19,8 +19,6 @@ import java.util.HashMap;
  */
 public class SecondFragment extends Fragment {
 
-
-
     private FoodAdapter foodAdapter;
     private ListView listView;
     private Category cat;
