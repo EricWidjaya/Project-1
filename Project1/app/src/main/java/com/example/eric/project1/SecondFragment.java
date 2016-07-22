@@ -104,18 +104,19 @@ public class SecondFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         EditText addName = (EditText) viewD.findViewById(R.id.addName);
-                        EditText addDesc = (EditText) viewD.findViewById(R.id.addDesc);
-                        EditText addCarb = (EditText) viewD.findViewById(R.id.addCarb);
-                        EditText addFat = (EditText) viewD.findViewById(R.id.addFat);
-                        EditText addProt = (EditText) viewD.findViewById(R.id.addProtein);
-                        String name = addName.getText().toString();
-                        String desc = addDesc.getText().toString();
-                        double carb = Double.parseDouble(addCarb.getText().toString());
-                        double fat = Double.parseDouble(addFat.getText().toString());
-                        double prot = Double.parseDouble(addProt.getText().toString());
-                        Food2 food2 = new Food2(name, desc, carb, fat, prot, cat);
-                        foodAdapter.getFoodArray().add(food2);
-                    }
+                    EditText addDesc = (EditText) viewD.findViewById(R.id.addDesc);
+                    EditText addCarb = (EditText) viewD.findViewById(R.id.addCarb);
+                    EditText addFat = (EditText) viewD.findViewById(R.id.addFat);
+                    EditText addProt = (EditText) viewD.findViewById(R.id.addProtein);
+                    String name = addName.getText().toString();
+                    String desc = addDesc.getText().toString();
+                    double carb = Double.parseDouble(addCarb.getText().toString());
+                    double fat = Double.parseDouble(addFat.getText().toString());
+                    double prot = Double.parseDouble(addProt.getText().toString());
+                    Food2 food2 = new Food2(name, desc, carb, fat, prot, cat);
+                    foodAdapter.getFoodArray().add(food2);
+                    foodAdapter.notifyDataSetChanged();
+                }
                 });
                 inputAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override

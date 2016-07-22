@@ -49,6 +49,7 @@ public class Category implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(getFoodName());
+
         parcel.writeParcelableArray(food2ArrayList.toArray(new Category[0]), i);
     }
 
