@@ -39,7 +39,7 @@ public class FoodAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return foods.get(position).getId();
+        return 0;
     }
 
     public ArrayList<Food2> getFoodArray()

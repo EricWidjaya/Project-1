@@ -4,10 +4,12 @@ package com.example.eric.project1;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -45,9 +47,30 @@ public class SecondFragment extends Fragment {
 
         Bundle bundle = getArguments();
         cat = bundle.getParcelable("Category");
+        ((MainActivity)getActivity()).setActionBarTitle(cat.getFoodName());
         foodAdapter = new FoodAdapter(cat.getFoodArrayList(),getContext());
         listView = (ListView) getActivity().findViewById(R.id.listView2);
         listView.setAdapter(foodAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+
+                Food2 food = (Food2) foodAdapter.getItem(position);
+                Fragment thirdFrag = new ThirdFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("Food",food);
+                thirdFrag.setArguments(bundle);
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container,thirdFrag);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+
+        });
 
     }
+
 }

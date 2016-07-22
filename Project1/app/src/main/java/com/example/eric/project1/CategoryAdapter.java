@@ -37,7 +37,7 @@ public class CategoryAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int position) {
-        return foods.get(position).getFoodId();
+        return 0;
     }
 
     @Override

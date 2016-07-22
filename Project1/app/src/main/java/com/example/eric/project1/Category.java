@@ -10,20 +10,17 @@ import java.util.ArrayList;
  */
 public class Category implements Parcelable {
 
-    private int foodId;
+
     private String foodName;
     private ArrayList<Food2> food2ArrayList = new ArrayList<>();
 
 
-    public Category(int foodId, String foodName)
+    public Category(String foodName)
         {
-            this.foodId=foodId;
+
             this.foodName=foodName;
         }
 
-    public void setFoodId(int foodId) {
-        this.foodId = foodId;
-    }
 
     public void setFoodName(String foodName) {
         this.foodName = foodName;
@@ -31,10 +28,6 @@ public class Category implements Parcelable {
 
     public Category(Parcel in) {
         foodName = in.readString();
-    }
-
-    public int getFoodId() {
-        return foodId;
     }
 
     public String getFoodName() {
