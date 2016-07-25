@@ -17,4 +17,6 @@ public class Model {
     public static ArrayList<Category> getKategoriArrayList() {
         return new ArrayList<>(kategoriArrayList);
     }
+
+
 }

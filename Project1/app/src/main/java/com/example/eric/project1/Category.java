@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Eric on 7/21/2016.
  */
-public class Category implements Parcelable {
+public class Category  {
 
 
     private String foodName;
@@ -39,19 +39,19 @@ public class Category implements Parcelable {
         return food2ArrayList;
     }
 
-    @Override
+    //@Override
     public int describeContents() {
         return 0;
     }
 
 
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(getFoodName());
+    //@Override
+   // public void writeToParcel(Parcel parcel, int i) {
+  //      parcel.writeString(getFoodName());
 
-        parcel.writeParcelableArray(food2ArrayList.toArray(new Category[0]), i);
-    }
+  //             parcel.writeParcelableArray(food2ArrayList.toArray(new Food2[0]), i);
+   // }
 
     public static final Parcelable.Creator<Category> CREATOR = new Parcelable.Creator<Category>() {
         public Category createFromParcel(Parcel in) {
@@ -62,5 +62,7 @@ public class Category implements Parcelable {
             return new Category[size];
         }
     };
+
+
 
 }

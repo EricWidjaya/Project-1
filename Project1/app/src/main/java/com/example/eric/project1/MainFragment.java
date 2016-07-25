@@ -32,6 +32,7 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
+
     }
 
 
@@ -39,12 +40,14 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        ((MainActivity)getActivity()).setActionBarTitle("Food");
+        ((MainActivity)getActivity()).setActionBarTitle("Foods");
         super.onActivityCreated(savedInstanceState);
 
         Log.d("MainFragment", "OnActivityCreated is called!");
@@ -61,10 +64,10 @@ public class MainFragment extends Fragment {
 
                 Category food = (Category) custom.getItem(position);
                 Fragment secondFrag = new SecondFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("Category",food);
-
-                secondFrag.setArguments(bundle);
+               // Bundle bundle = new Bundle();
+               // bundle.putParcelable("Category",food);
+                ((MainActivity)getActivity()).setCurrentCat(food);
+               // secondFrag.setArguments(bundle);
 
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 

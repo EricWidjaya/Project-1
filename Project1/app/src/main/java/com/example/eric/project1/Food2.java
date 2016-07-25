@@ -15,17 +15,17 @@ public class Food2 implements Parcelable{
     private double carbo;
     private double fat;
     private double protein;
+    private String images;
     private Category category;
 
-
-    public Food2 (String name, String description,double carbo, double fat , double protein, Category category) {
+    public Food2 (String name, String description,double carbo, double fat , double protein, String img) {
 
         this.name = name;
         this.description = description;
-        this.category = category;
         this.carbo = carbo;
         this.fat = fat;
         this.protein = protein;
+        this.images = img;
     }
 
     public String getName() {
@@ -68,8 +68,11 @@ public class Food2 implements Parcelable{
         this.protein = protein;
     }
 
+    public String getImages() { return images; }
 
-
+    public void setImages(String images) {
+        this.images = images;
+    }
 
     public Food2(Parcel in)
     {
@@ -78,22 +81,20 @@ public class Food2 implements Parcelable{
         carbo = in.readDouble();
         protein = in.readDouble();
         fat = in.readDouble();
+        images = in.readString();
         category = in.readParcelable(null);
     }
-
-
 
     @Override
     public int describeContents() {
         return 0;
     }
 
-
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeParcelable(category, i);
+        //parcel.writeParcelable(category, i);
     }
 
     public static final Parcelable.Creator<Food2> CREATOR = new Parcelable.Creator<Food2>() {
