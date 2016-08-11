@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class Food2 implements Parcelable{
 
+    private int catid;
     private String name;
     private String description;
     private double carbo;
@@ -18,14 +19,23 @@ public class Food2 implements Parcelable{
     private String images;
     private Category category;
 
-    public Food2 (String name, String description,double carbo, double fat , double protein, String img) {
+    public Food2 (int catid, String name, String description,double carbo, double fat , double protein, String img) {
 
+        this.catid = catid;
         this.name = name;
         this.description = description;
         this.carbo = carbo;
         this.fat = fat;
         this.protein = protein;
         this.images = img;
+    }
+
+    public int getCatid() {
+        return catid;
+    }
+
+    public void setCatid(int catid) {
+        this.catid = catid;
     }
 
     public String getName() {
@@ -76,6 +86,7 @@ public class Food2 implements Parcelable{
 
     public Food2(Parcel in)
     {
+        catid = in.readInt();
         name = in.readString();
         description = in.readString();
         carbo = in.readDouble();

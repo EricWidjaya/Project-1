@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class CategoryAdapter extends BaseAdapter{
 
+    //private int id;
     private ArrayList<Category> foods;
     private Context context;
 

@@ -10,6 +10,11 @@ import java.util.ArrayList;
 public class Model {
     private static ArrayList<Category> kategoriArrayList = new ArrayList<>();
 
+    public static void clearKategoriArrayList() {
+        kategoriArrayList.clear();
+    }
+
+
     public static void addKategoriArrayList(Category kat) {
         kategoriArrayList.add(kat);
     }

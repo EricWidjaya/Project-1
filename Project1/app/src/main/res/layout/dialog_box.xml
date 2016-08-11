@@ -134,14 +134,5 @@
         android:layout_alignParentStart="true"
         android:text="Add IMG" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="IMG PATH:"
-        android:id="@+id/textVw"
-        android:layout_below="@+id/imageView"
-        android:layout_alignEnd="@+id/textView6" />
-
 
 </RelativeLayout>

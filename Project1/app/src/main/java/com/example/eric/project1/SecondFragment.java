@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,7 +27,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -42,6 +46,7 @@ public class SecondFragment extends Fragment {
     private Category cat;
     private String path;
     private View viewD;
+    private SearchView searchView;
 
     public SecondFragment() {
         // Required empty public constructor
@@ -59,21 +64,7 @@ public class SecondFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second, container, false);
-
         ((MainActivity)getActivity()).verifyStoragePermissions(getActivity());
-
-       /* Button buttonLoadImage = (Button) view.findViewById(R.id.button);
-        buttonLoadImage.setOnClickListener( new View.OnClickListener(){
-
-        public void onClick(View arg0){
-
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-            }
-        });*/
 
         return view;
     }
@@ -86,8 +77,41 @@ public class SecondFragment extends Fragment {
         cat = ((MainActivity)getActivity()).getCurrentCat();
         ((MainActivity)getActivity()).setActionBarTitle(cat.getFoodName());
         foodAdapter = new FoodAdapter(((MainActivity)getActivity()).getHash1().get(cat),getContext());
+
         listView = (ListView) getActivity().findViewById(R.id.listView2);
+        TextView empty = (TextView) getActivity().findViewById(android.R.id.empty);
+        listView.setEmptyView(empty);
         listView.setAdapter(foodAdapter);
+
+        searchView = (SearchView) getActivity().findViewById(R.id.searchView1);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String text) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String text) {
+                if(TextUtils.isEmpty(text))
+                {
+                    foodAdapter = new FoodAdapter(((MainActivity)getActivity()).getHash1().get(cat),getContext());
+                    listView.setAdapter(foodAdapter);
+                }
+
+                else if (!TextUtils.isEmpty(text))
+                {
+                    foodAdapter.getFilter().filter(text.toString());
+
+                    /*if (foodAdapter.equals(null))
+                    {
+                        Toast.makeText(getContext(), "No Result Found!", Toast.LENGTH_SHORT).show();
+                    }*/
+                }
+                return false;
+            }
+        });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -146,24 +170,29 @@ public class SecondFragment extends Fragment {
                         EditText addProt = (EditText) viewD.findViewById(R.id.addProtein);
                         String txt5 = path;
                         //ImageView imgs = (ImageView) viewD.findViewById(R.id.imageView);
+                        //TextView addImgPath = (TextView) viewD.findViewById(R.id.textVw);
 
+                        int id = cat.getFoodId();
                         String name = addName.getText().toString();
                         String desc = addDesc.getText().toString();
                         double carb = Double.parseDouble(addCarb.getText().toString());
                         double fat = Double.parseDouble(addFat.getText().toString());
                         double prot = Double.parseDouble(addProt.getText().toString());
 
-                        Food2 food2 = new Food2(name, desc, carb, fat, prot, txt5);
+                        Food2 food2 = new Food2(id, name, desc, carb, fat, prot, txt5);
                         foodAdapter.getFoodArray().add(food2);
                         foodAdapter.notifyDataSetChanged();
+                        Log.d("food ID: ",Integer.toString(id) );
                     }
                 });
+
                 inputAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
+
                 AlertDialog alertDialog = inputAlert.create();
                 alertDialog.show();
                 break;
@@ -195,9 +224,6 @@ public class SecondFragment extends Fragment {
 
                     ImageView imageView = (ImageView) viewD.findViewById(R.id.imageView);
                     imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-                    //TextView editText5 = (TextView) getView().findViewById(R.id.textVw);
-                   // editText5.setText(picturePath);
 
                     path = picturePath;
 

@@ -48,6 +48,7 @@ public class ThirdFragment extends Fragment {
         TextView protein = (TextView) getView().findViewById(R.id.protein);
         ImageView view = (ImageView) getView().findViewById(R.id.imgView);
         Bitmap bitmp = BitmapFactory.decodeFile(images);
+        TextView imagepath = (TextView) getView().findViewById(R.id.imgPath) ;
 
         name.setText("Name: "  + food.getName());
         desc.setText("Description: " + food.getDescription());
@@ -55,6 +56,7 @@ public class ThirdFragment extends Fragment {
         fat.setText("Fat: " + String.valueOf(food.getFat()));
         protein.setText("Protein: " + String.valueOf(food.getProtein()));
         view.setImageBitmap(bitmp);
+        imagepath.setText("ImagesPath: " + images);
 
     }
 }

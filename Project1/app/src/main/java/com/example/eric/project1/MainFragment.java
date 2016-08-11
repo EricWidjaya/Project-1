@@ -28,11 +28,9 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
-
     }
 
 
@@ -46,13 +44,11 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         ((MainActivity)getActivity()).setActionBarTitle("Foods");
         super.onActivityCreated(savedInstanceState);
 
-        Log.d("MainFragment", "OnActivityCreated is called!");
-
-
+       // Log.d("MainFragment", "OnActivityCreated is called!");
 
         final CategoryAdapter custom = new CategoryAdapter(Model.getKategoriArrayList(), getContext());
         listView = (ListView) getActivity().findViewById(R.id.listView);
