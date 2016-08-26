@@ -110,4 +110,29 @@
         android:layout_alignStart="@+id/addFat"
         android:layout_alignEnd="@+id/addFat" />
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/addProtein"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Images:"
+        android:id="@+id/textView7"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentStart="true"
+        android:text="Add IMG" />
+
+
 </RelativeLayout>

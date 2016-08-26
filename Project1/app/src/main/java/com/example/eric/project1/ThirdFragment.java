@@ -1,12 +1,15 @@
 package com.example.eric.project1;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -36,17 +39,24 @@ public class ThirdFragment extends Fragment {
         Food2 food = bundle.getParcelable("Food");
         ((MainActivity)getActivity()).setActionBarTitle(food.getName());
 
+        String images = food.getImages();
+
         TextView name = (TextView) getView().findViewById(R.id.xname);
         TextView desc = (TextView) getView().findViewById(R.id.description);
         TextView carb = (TextView) getView().findViewById(R.id.carbo);
         TextView fat = (TextView) getView().findViewById(R.id.fat);
         TextView protein = (TextView) getView().findViewById(R.id.protein);
+        ImageView view = (ImageView) getView().findViewById(R.id.imgView);
+        Bitmap bitmp = BitmapFactory.decodeFile(images);
+        TextView imagepath = (TextView) getView().findViewById(R.id.imgPath) ;
 
         name.setText("Name: "  + food.getName());
         desc.setText("Description: " + food.getDescription());
         carb.setText("Carbohydrate: " + String.valueOf(food.getCarbo()));
         fat.setText("Fat: " + String.valueOf(food.getFat()));
         protein.setText("Protein: " + String.valueOf(food.getProtein()));
+        view.setImageBitmap(bitmp);
+        imagepath.setText("ImagesPath: " + images);
 
     }
 }

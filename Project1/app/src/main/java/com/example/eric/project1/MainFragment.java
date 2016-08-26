@@ -28,10 +28,9 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
     }
 
 
@@ -39,17 +38,17 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        ((MainActivity)getActivity()).setActionBarTitle("Food");
+    public void onActivityCreated(Bundle savedInstanceState) {
+        ((MainActivity)getActivity()).setActionBarTitle("Foods");
         super.onActivityCreated(savedInstanceState);
 
-        Log.d("MainFragment", "OnActivityCreated is called!");
-
-
+       // Log.d("MainFragment", "OnActivityCreated is called!");
 
         final CategoryAdapter custom = new CategoryAdapter(Model.getKategoriArrayList(), getContext());
         listView = (ListView) getActivity().findViewById(R.id.listView);
@@ -61,10 +60,10 @@ public class MainFragment extends Fragment {
 
                 Category food = (Category) custom.getItem(position);
                 Fragment secondFrag = new SecondFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("Category",food);
-
-                secondFrag.setArguments(bundle);
+               // Bundle bundle = new Bundle();
+               // bundle.putParcelable("Category",food);
+                ((MainActivity)getActivity()).setCurrentCat(food);
+               // secondFrag.setArguments(bundle);
 
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 

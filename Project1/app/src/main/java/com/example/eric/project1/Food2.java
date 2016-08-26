@@ -10,22 +10,32 @@ import java.util.ArrayList;
  */
 public class Food2 implements Parcelable{
 
+    private int catid;
     private String name;
     private String description;
     private double carbo;
     private double fat;
     private double protein;
+    private String images;
     private Category category;
 
+    public Food2 (int catid, String name, String description,double carbo, double fat , double protein, String img) {
 
-    public Food2 (String name, String description,double carbo, double fat , double protein, Category category) {
-
+        this.catid = catid;
         this.name = name;
         this.description = description;
-        this.category = category;
         this.carbo = carbo;
         this.fat = fat;
         this.protein = protein;
+        this.images = img;
+    }
+
+    public int getCatid() {
+        return catid;
+    }
+
+    public void setCatid(int catid) {
+        this.catid = catid;
     }
 
     public String getName() {
@@ -68,32 +78,34 @@ public class Food2 implements Parcelable{
         this.protein = protein;
     }
 
+    public String getImages() { return images; }
 
-
+    public void setImages(String images) {
+        this.images = images;
+    }
 
     public Food2(Parcel in)
     {
+        catid = in.readInt();
         name = in.readString();
         description = in.readString();
         carbo = in.readDouble();
         protein = in.readDouble();
         fat = in.readDouble();
+        images = in.readString();
         category = in.readParcelable(null);
     }
-
-
 
     @Override
     public int describeContents() {
         return 0;
     }
 
-
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeParcelable(category, i);
+        //parcel.writeParcelable(category, i);
     }
 
     public static final Parcelable.Creator<Food2> CREATOR = new Parcelable.Creator<Food2>() {
